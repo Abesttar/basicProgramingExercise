@@ -1,0 +1,58 @@
+products = []
+
+while True:
+    print("\nMenu:")
+    print("\n1. List Products")
+    print("2. Add Product")
+    print("3. Remove Product by Name")
+    print("4. Remove Product by Number")
+    print("5. Exit")
+
+    choice = input("\nEnter your choice: ")
+
+    if choice == '1':
+        if not products:
+            print("")
+            print("NO PRODUCT AVAILABLE.")
+            print("")
+        else:
+            print("")
+            print("List of Products:")
+            [print(f"{i}. {item}") for i, item in enumerate(products, 1)]
+    elif choice == '2':
+        print("")
+        products.append(input("Enter product name: "))
+        print("")
+        print("PRODUCT ADDED SUCCESFULLY.")
+    elif choice == '3':
+        if not products:
+            print("")
+            print("NO PRODUCT AVAILABLE TO REMOVE.")
+            print("")
+        else:
+            print("")
+            print("List of Products:")
+            [print(f"{i}. {item}") for i, item in enumerate(products, 1)]
+            name_to_remove = input("\nEnter the name of the product to remove: ")
+            if name_to_remove in products:
+                products.remove(name_to_remove)
+                print("\nPRODUCT REMOVED SUCCESFULLY.")
+            else:
+                print("PRODUCT NOT FOUND.")
+    elif choice == '4':
+        if not products:
+            print("No products available to remove.")
+        else:
+            print("\nList of Products:")
+            [print(f"{i}. {item}") for i, item in enumerate(products, 1)]
+            product_number = int(input("\nEnter the product number to remove: "))
+            if 1 <= product_number <= len(products):
+                products.pop(product_number - 1)
+                print("\nPRODUCT REMOVED SUCCESFULLY.")
+            else:
+                print("INVALID NUMBER.")
+    elif choice == '5':
+        print("\nThank you! See you again.")
+        break
+    else:
+        print("\nINVALID CHOICE.")
